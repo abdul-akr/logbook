@@ -13,11 +13,11 @@ class Roles(models.Model):
     #     (ADMIN,'admin'),
     #     (SUPERVISOR,'supervisor')
     # )
-    role=models.CharField(max_length=50,primary_key=True)
+    role=models.CharField(max_length=50,unique=True)
     
 
 class User(models.Model):
-    uniqueid=models.CharField(max_length=20,unique=True,primary_key=True)
+    uniqueid=models.CharField(max_length=20,unique=True,unique=True)
     firstName=models.CharField(max_length=20)
     lastName=models.CharField(max_length=20)
     email=models.EmailField()
