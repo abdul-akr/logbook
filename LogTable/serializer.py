@@ -4,7 +4,7 @@ from .models import *
 class RoleSerializer(serializers.ModelSerializer):
     class Meta:
         model=Roles
-        fields=('role',)
+        fields=('role','id')
 
         
 class logSerializer(serializers.ModelSerializer):
@@ -17,5 +17,5 @@ class UserSerializer(serializers.ModelSerializer):
     role=RoleSerializer(many=True,read_only=True)
     class Meta:
         model=User
-        fields=('uniqueid','firstName','lastName','email','phone','password','role','logs')
+        fields=('id','uniqueid','firstName','lastName','email','phone','password','role','logs')
         depth=1

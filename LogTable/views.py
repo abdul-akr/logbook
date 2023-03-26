@@ -32,7 +32,8 @@ class userwith_id(APIView):
     def put(self, request, id, format=None):
         user=User.objects.get(uniqueid=id)
         for var in request.data['role']:
-            user.role.add(var)
+            roles=Roles.objects.get(id=var)
+            user.role.add(roles)
         serialize=UserSerializer(user,data=request.data,partial=True) 
         if serialize.is_valid():
             serialize.save()
