@@ -16,7 +16,8 @@ class userView1(APIView):
     # permission_classes = (IsAuthenticated,)
 
     def get(self,request,format=None):
-        users=User.objects.all()
+        # users=User.objects.all()
+        users=User.objects.filter(role__id=1)
         serialize=UserSerializer(users,many=True)
         return Response(serialize.data)
     
@@ -32,7 +33,7 @@ class userwith_id(APIView):
     def put(self, request, id, format=None):
         user=User.objects.get(uniqueid=id)
         for var in request.data['role']:
-            roles=Roles.objects.get(id=var)
+            roles=Role.objects.get(id=var)
             user.role.add(roles)
         serialize=UserSerializer(user,data=request.data,partial=True) 
         if serialize.is_valid():
@@ -141,11 +142,11 @@ class roleView(APIView):
         return Response(serialize.data ,202)
 
     def delete(self, request, format=None):
-        Roles.objects.all().delete()
+        Role.objects.all().delete()
         return Response("deletd",200)
 
     def get(self, request, format=None):
-        roles=Roles.objects.all()
+        roles=Role.objects.all()
         serialize=RoleSerializer(roles,many=True)
         return Response(serialize.data,200)
 

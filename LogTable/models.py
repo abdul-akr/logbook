@@ -15,6 +15,8 @@ class Roles(models.Model):
     # )
     role=models.CharField(max_length=50,unique=True)
     
+class Role(models.Model):
+    role=models.CharField(max_length=50,unique=True)
 
 class User(models.Model):
     uniqueid=models.CharField(max_length=20,unique=True)
@@ -23,7 +25,7 @@ class User(models.Model):
     email=models.EmailField()
     phone=models.IntegerField()
     password=models.CharField(max_length=10)
-    role=models.ManyToManyField(Roles)
+    role=models.ManyToManyField(Role)
     # class Role(models.TextChoices):
         
     #     ADMIN="ADMIN",'Admin'

@@ -3,7 +3,7 @@ from .models import *
 
 class RoleSerializer(serializers.ModelSerializer):
     class Meta:
-        model=Roles
+        model=Role
         fields=('role','id')
 
         

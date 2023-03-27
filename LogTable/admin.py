@@ -5,4 +5,4 @@ from .models import *
 
 admin.site.register(User)
 admin.site.register(LogsTable)
-admin.site.register(Roles)
+admin.site.register(Role)
